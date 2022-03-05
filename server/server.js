@@ -39,13 +39,17 @@ const databaseName = "acebookDatabase";
 
 // connect to mongodb
 mongoose
-  .connect(mongoConnectionURL, {
+  .connect(process.env.MONGODB_URI || mongoConnectionURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: databaseName,
   })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(`Error connecting to MongoDB: ${err}`));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/dist'))
+}
 
 // create a new express server
 const app = express();
@@ -95,7 +99,7 @@ app.use((err, req, res, next) => {
 });
 
 // hardcode port to 3000 for now
-const port = 3000;
+const port = process.env.PORT || 3000;
 const server = http.Server(app);
 socketManager.init(server);
 
