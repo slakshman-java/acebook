@@ -49,10 +49,11 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(`Error connecting to MongoDB: ${err}`));
 
+  /*
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/dist'))
 }
-
+*/
 // create a new express server
 const app = express();
 app.use(validator.checkRoutes);
