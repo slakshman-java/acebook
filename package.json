@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "hotloader": "webpack serve --config ./webpack.config.js --mode development --port 5000",
+    "hotloader": "webpack serve --config ./webpack.config.js --mode development --port process.env.PORT || 5000",
     "start": "node ./server/server.js",
     "build": "webpack"
   },
