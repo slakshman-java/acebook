@@ -108,7 +108,7 @@ app.get('*', (req, res) => {
 });
 */
 // port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const server = http.Server(app);
 //socketManager.init(server);
 
