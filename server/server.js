@@ -29,7 +29,7 @@ const api = require("./api");
 const auth = require("./auth");
 
 // socket stuff
-const socketManager = require("./server-socket");
+// const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
@@ -37,9 +37,11 @@ const mongoConnectionURL = "mongodb+srv://Vivek295:KV8fFEB2I2S3Z4fI@cluster0.gzc
 // TODO change database name to the name you chose
 const databaseName = "acebookDatabase";
 
+// process.env.MONGO_URL || 
+
 // connect to mongodb
 mongoose
-  .connect(process.env.MONGODB_URI || mongoConnectionURL, {
+  .connect(mongoConnectionURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: databaseName,
@@ -98,10 +100,17 @@ app.use((err, req, res, next) => {
   });
 });
 
-// hardcode port to 3000 for now
-const port = process.env.PORT || 3000;
+/*
+app.use(express.static(path.join(__dirname, "/client")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+});
+*/
+// port
+const port = process.env.PORT || 5000;
 const server = http.Server(app);
-socketManager.init(server);
+//socketManager.init(server);
 
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
