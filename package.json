@@ -5,10 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "hotloader": "webpack serve --config ./webpack.config.js --mode development --port 5000",
-    "nodemon": "nodemon --ignore client/",
-    "start": "cross-env NODE_OPTIONS=--max_old_space_size=4096 webpack",
-    "build": "webpack",
-    "heroku-postbuild":"npm run hotloader"
+    "start": "nodemon --ignore client/"
   },
   "repository": {
     "type": "git",
