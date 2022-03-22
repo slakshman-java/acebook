@@ -6,7 +6,6 @@
   "scripts": {
     "hotloader": "webpack serve --config ./webpack.config.js --mode development --port 5000",
     "start": "nodemon --ignore client/",
-    "heroku-postbuild":"npm run hotloader"
   },
   "repository": {
     "type": "git",
