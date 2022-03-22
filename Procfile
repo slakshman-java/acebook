@@ -1,2 +1,1 @@
-web: npm run hotloader
-web: npm start
+web: node ./server/server.js
